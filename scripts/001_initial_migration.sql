@@ -7,8 +7,6 @@ CREATE TABLE IF NOT EXISTS nyc.collisions (
     crash_datetime TIMESTAMPTZ NOT NULL,
     borough TEXT,
     zip_code TEXT,
-    latitude DOUBLE PRECISION,
-    longitude DOUBLE PRECISION,
     location GEOMETRY(Point, 4326),
     on_street_name TEXT,
     off_street_name TEXT,
