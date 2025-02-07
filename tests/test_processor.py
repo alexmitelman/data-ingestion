@@ -1,7 +1,6 @@
 import pytest
 
-from src.processor import transform_and_validate_record
-from src.schemas import CollisionSchema
+from src.processor import CollisionSchema, transform_and_validate_record
 
 
 @pytest.mark.parametrize(
