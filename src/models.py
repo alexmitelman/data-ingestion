@@ -1,6 +1,10 @@
 from datetime import datetime
 
 from geoalchemy2 import Geometry
+from geoalchemy2.elements import WKBElement
+from geoalchemy2.shape import to_shape
+from pydantic import field_serializer
+from shapely.geometry import mapping
 from sqlmodel import Column, Field, SQLModel
 
 
@@ -38,3 +42,10 @@ class CollisionModel(SQLModel, table=True):
     vehicle_type_code3: str | None = None
     vehicle_type_code4: str | None = None
     vehicle_type_code5: str | None = None
+
+    @field_serializer("location")
+    def serialize_location(self, location: WKBElement | None):
+        """Convert PostGIS `WKBElement` into GeoJSON."""
+        if location:
+            return mapping(to_shape(location))
+        return None
