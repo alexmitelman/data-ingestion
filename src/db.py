@@ -6,7 +6,7 @@ from sqlmodel import Session, create_engine
 from config import settings
 
 logging.getLogger("sqlalchemy.engine.Engine").setLevel(logging.WARNING)
-engine = create_engine(settings.DATABASE_URL, echo=False)
+engine = create_engine(settings.DATABASE_URL.unicode_string(), echo=False)
 
 
 @contextmanager
