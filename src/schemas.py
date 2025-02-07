@@ -1,6 +1,7 @@
-from pydantic import BaseModel, Field, ConfigDict, model_validator
-from shapely.geometry import Point
 from datetime import datetime
+
+from pydantic import BaseModel, ConfigDict, Field, model_validator
+from shapely.geometry import Point
 
 
 class CollisionSchema(BaseModel):

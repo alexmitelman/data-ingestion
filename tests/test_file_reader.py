@@ -1,5 +1,6 @@
 from src.file_reader import read_csv_in_chunks
 
+
 def test_first_chunk_content():
     """Test that the first chunk contains the correct records."""
     chunk_generator = read_csv_in_chunks()

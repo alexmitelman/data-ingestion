@@ -1,6 +1,7 @@
-from sqlmodel import Field, SQLModel, Column
 from datetime import datetime
+
 from geoalchemy2 import Geometry
+from sqlmodel import Column, Field, SQLModel
 
 
 class CollisionModel(SQLModel, table=True):

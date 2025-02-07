@@ -1,8 +1,10 @@
-from geoalchemy2.shape import from_shape
 import logging
+
+from geoalchemy2.shape import from_shape
+
 from db import get_session
-from schemas import CollisionSchema
 from models import CollisionModel
+from schemas import CollisionSchema
 
 logger = logging.getLogger(__name__)
 

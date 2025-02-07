@@ -1,7 +1,8 @@
-from schemas import CollisionSchema
-from pydantic import ValidationError
 import logging
 
+from pydantic import ValidationError
+
+from schemas import CollisionSchema
 
 logger = logging.getLogger(__name__)
 

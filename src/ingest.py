@@ -1,6 +1,7 @@
+from db_writer import insert_records_to_db
 from file_reader import read_csv_in_chunks
 from processor import transform_and_validate_record
-from db_writer import insert_records_to_db
+
 
 def process_csv():
     """Processes the entire CSV file in chunks."""

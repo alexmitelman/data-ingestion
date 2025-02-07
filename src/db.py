@@ -1,8 +1,9 @@
-from sqlmodel import create_engine, Session
-from config import settings
-from contextlib import contextmanager
 import logging
+from contextlib import contextmanager
 
+from sqlmodel import Session, create_engine
+
+from config import settings
 
 logging.getLogger("sqlalchemy.engine.Engine").setLevel(logging.WARNING)
 engine = create_engine(settings.DATABASE_URL, echo=False)

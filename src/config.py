@@ -1,6 +1,8 @@
-from pydantic_settings import BaseSettings
-from pathlib import Path
 import logging
+from pathlib import Path
+
+from pydantic_settings import BaseSettings
+
 
 class Settings(BaseSettings):
     DATABASE_URL: str
