@@ -32,7 +32,7 @@ It would be a good choice for us for the following reasons:
 graph TD;
     A["CSV Source (Large File)"] -->|Reads in chunks| B["File Reader (Generator)"];
     B -->|Processes chunk| C["Processor (Pydantic Validation)"];
-    C -- Valid Records --> D["Database Writer"];
+    C -- Valid Records --> D["Database Writer (SQLAlchemy via SQLModel)"];
     C -- Invalid Records --> E["Error Logger"];
     
     D -->|Inserts Data| H["PostgreSQL (PostGIS)"];
