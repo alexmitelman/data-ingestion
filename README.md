@@ -26,6 +26,14 @@ It would be a good choice for us for the following reasons:
  - contains geo location data
  - CSV file size is 455 MB
 
+# Run
+
+Data ingestion app:
+`uv run python src/ingest.py`
+
+API:
+`uv run uvicorn src.api:app --reload`
+
 # Diagrams
 
 ## High level diagram
