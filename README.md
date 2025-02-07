@@ -1,12 +1,12 @@
-# Install Python and tools
+# Install
+## Python and tools
 
 
-`curl -LsSf https://astral.sh/uv/install.sh | sh`
+- `curl -LsSf https://astral.sh/uv/install.sh | sh`
+- `uv python install 3.13`
+- `uv install`
 
-`uv python install 3.13`
-
-
-# Docker
+## Docker
 
 `docker-compose up -d`
 
@@ -25,6 +25,8 @@ It would be a good choice for us for the following reasons:
  - time series data
  - contains geo location data
  - CSV file size is 455 MB
+
+# Diagrams
 
 ## High level diagram
 
