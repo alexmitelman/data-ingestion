@@ -8,6 +8,7 @@ from schemas import CollisionSchema
 
 logger = logging.getLogger(__name__)
 
+
 def insert_records_to_db(records: list[CollisionSchema]):
     """Inserts processed records into the database in batch."""
     with get_session() as session:
@@ -16,10 +17,14 @@ def insert_records_to_db(records: list[CollisionSchema]):
         for record in records:
             if record:
                 try:
-                    location_geom = from_shape(record.location, srid=4326) if record.location is not None else None
+                    location_geom = (
+                        from_shape(record.location, srid=4326)
+                        if record.location is not None
+                        else None
+                    )
                     collision_obj = CollisionModel(
                         **record.model_dump(exclude_unset=True, exclude={"location"}),
-                        location=location_geom
+                        location=location_geom,
                     )
 
                     objects.append(collision_obj)

@@ -23,17 +23,26 @@ class CollisionSchema(BaseModel):
     number_of_cyclist_killed: int = Field(alias="NUMBER OF CYCLIST KILLED")
     number_of_motorist_injured: int = Field(alias="NUMBER OF MOTORIST INJURED")
     number_of_motorist_killed: int = Field(alias="NUMBER OF MOTORIST KILLED")
-    contributing_factor_vehicle_1: str | None = Field(None, alias="CONTRIBUTING FACTOR VEHICLE 1")
-    contributing_factor_vehicle_2: str | None = Field(None, alias="CONTRIBUTING FACTOR VEHICLE 2")
-    contributing_factor_vehicle_3: str | None = Field(None, alias="CONTRIBUTING FACTOR VEHICLE 3")
-    contributing_factor_vehicle_4: str | None = Field(None, alias="CONTRIBUTING FACTOR VEHICLE 4")
-    contributing_factor_vehicle_5: str | None = Field(None, alias="CONTRIBUTING FACTOR VEHICLE 5")
+    contributing_factor_vehicle_1: str | None = Field(
+        None, alias="CONTRIBUTING FACTOR VEHICLE 1"
+    )
+    contributing_factor_vehicle_2: str | None = Field(
+        None, alias="CONTRIBUTING FACTOR VEHICLE 2"
+    )
+    contributing_factor_vehicle_3: str | None = Field(
+        None, alias="CONTRIBUTING FACTOR VEHICLE 3"
+    )
+    contributing_factor_vehicle_4: str | None = Field(
+        None, alias="CONTRIBUTING FACTOR VEHICLE 4"
+    )
+    contributing_factor_vehicle_5: str | None = Field(
+        None, alias="CONTRIBUTING FACTOR VEHICLE 5"
+    )
     vehicle_type_code1: str | None = Field(None, alias="VEHICLE TYPE CODE 1")
     vehicle_type_code2: str | None = Field(None, alias="VEHICLE TYPE CODE 2")
     vehicle_type_code3: str | None = Field(None, alias="VEHICLE TYPE CODE 3")
     vehicle_type_code4: str | None = Field(None, alias="VEHICLE TYPE CODE 4")
     vehicle_type_code5: str | None = Field(None, alias="VEHICLE TYPE CODE 5")
-
 
     @model_validator(mode="before")
     @classmethod
@@ -42,7 +51,7 @@ class CollisionSchema(BaseModel):
             try:
                 data["crash_datetime"] = datetime.strptime(
                     f"{data.pop('CRASH DATE')} {data.pop('CRASH TIME')}",
-                    "%m/%d/%Y %H:%M"
+                    "%m/%d/%Y %H:%M",
                 )
 
             except ValueError:
@@ -54,7 +63,7 @@ class CollisionSchema(BaseModel):
             if lat and lon:
                 try:
                     data["location"] = Point(float(lon), float(lat))
-                    
+
                 except ValueError:
                     raise ValueError(f"Invalid lat/lon: {lat}, {lon}")
 

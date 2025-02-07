@@ -16,8 +16,10 @@ class Settings(BaseSettings):
 
         if not csv_files:
             raise FileNotFoundError(f"No CSV files found in {self.DATA_DIR}")
-        
-        return max(csv_files, key=lambda f: f.stat().st_mtime)  # Pick the latest modified file
+
+        return max(
+            csv_files, key=lambda f: f.stat().st_mtime
+        )  # Pick the latest modified file
 
     class Config:
         env_file = ".env"

@@ -35,7 +35,6 @@ from src.schemas import CollisionSchema
             },
             True,
         ),
-
         # ✅ Test: Missing Optional Fields (Should Still Work)
         (
             {
@@ -62,7 +61,6 @@ from src.schemas import CollisionSchema
             },
             True,  # Expected result: Successfully parsed
         ),
-
         # ❌ Test: Missing Required Fields (Should Fail)
         (
             {
@@ -88,6 +86,8 @@ def test_clean_record(input_data, expected):
     result = transform_and_validate_record(input_data)
 
     if expected:
-        assert isinstance(result, CollisionSchema), "Valid record should return a CollisionSchema instance"
+        assert isinstance(result, CollisionSchema), (
+            "Valid record should return a CollisionSchema instance"
+        )
     else:
         assert result is None, "Invalid record should return None"

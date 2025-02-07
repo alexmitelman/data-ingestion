@@ -9,5 +9,6 @@ def process_csv():
         records = [transform_and_validate_record(row) for row in chunk]
         insert_records_to_db(records)
 
+
 if __name__ == "__main__":
     process_csv()

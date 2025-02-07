@@ -14,7 +14,9 @@ class CollisionModel(SQLModel, table=True):
     crash_datetime: datetime
     borough: str | None = None
     zip_code: str | None = None
-    location: Column = Field(sa_column=Column(Geometry("POINT", srid=4326, nullable=True)))
+    location: Column = Field(
+        sa_column=Column(Geometry("POINT", srid=4326, nullable=True))
+    )
     on_street_name: str | None = None
     off_street_name: str | None = None
     cross_street_name: str | None = None
