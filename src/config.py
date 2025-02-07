@@ -1,14 +1,21 @@
 import logging
 from pathlib import Path
 
+from pydantic import PostgresDsn, computed_field
 from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
-    DATABASE_URL: str
+    DATABASE_URL: PostgresDsn
     CHUNK_SIZE: int = 10000
     LOG_FILE: str = "logs/errors.log"
     DATA_DIR: Path = Path("data")
+
+    @computed_field
+    @property
+    def ASYNC_DATABASE_URL(self) -> str:
+        """Convert DATABASE_URL to async format for SQLAlchemy"""
+        return str(self.DATABASE_URL).replace("postgresql://", "postgresql+asyncpg://")
 
     @property
     def CSV_FILE_PATH(self) -> Path:
