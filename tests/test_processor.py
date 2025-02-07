@@ -1,5 +1,5 @@
 import pytest
-from src.processor import clean_record
+from src.processor import transform_and_validate_record
 from src.schemas import CollisionSchema
 
 
@@ -84,7 +84,7 @@ from src.schemas import CollisionSchema
 )
 def test_clean_record(input_data, expected):
     """Test that clean_record correctly processes and validates data."""
-    result = clean_record(input_data)
+    result = transform_and_validate_record(input_data)
 
     if expected:
         assert isinstance(result, CollisionSchema), "Valid record should return a CollisionSchema instance"

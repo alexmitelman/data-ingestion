@@ -1,17 +1,19 @@
-from sqlmodel import Field, SQLModel
+from sqlmodel import Field, SQLModel, Column
 from datetime import datetime
-from shapely.geometry import Point
+from geoalchemy2 import Geometry
 
 
 class CollisionModel(SQLModel, table=True):
     __tablename__ = "collisions"
     __table_args__ = {"schema": "nyc"}
 
+    model_config = {"arbitrary_types_allowed": True}
+
     collision_id: int = Field(primary_key=True)
     crash_datetime: datetime
     borough: str | None = None
     zip_code: str | None = None
-    location: Point | None = None
+    location: Column = Field(sa_column=Column(Geometry("POINT", srid=4326, nullable=True)))
     on_street_name: str | None = None
     off_street_name: str | None = None
     cross_street_name: str | None = None
