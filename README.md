@@ -25,3 +25,15 @@ It would be a good choice for us for the following reasons:
  - time series data
  - contains geo location data
  - CSV file size is 455 MB
+
+## CSV Processing Pipeline
+
+```mermaid
+graph TD;
+    A["CSV Source (Large File)"] -->|Reads in chunks| B["File Reader (Generator)"];
+    B -->|Processes chunk| C["Processor (Pydantic Validation)"];
+    C -- Valid Records --> D["Database Writer (Async SQLAlchemy)"];
+    C -- Invalid Records --> E["Error Logger"];
+    
+    D -->|Inserts Data| H["PostgreSQL (PostGIS)"];
+```
