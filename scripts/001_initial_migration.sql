@@ -32,3 +32,7 @@ CREATE TABLE IF NOT EXISTS nyc.collisions (
 );
 
 CREATE INDEX idx_location ON nyc.collisions USING GIST(location);
+CREATE INDEX idx_crash_datetime ON nyc.collisions (crash_datetime DESC);
+CREATE INDEX idx_borough ON nyc.collisions (borough);
+CREATE INDEX idx_number_of_persons_injured ON nyc.collisions (number_of_persons_injured);
+CREATE INDEX idx_borough_crash_date ON nyc.collisions (borough, crash_datetime);
