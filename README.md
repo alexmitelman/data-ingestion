@@ -26,6 +26,16 @@ It would be a good choice for us for the following reasons:
  - contains geo location data
  - CSV file size is 455 MB
 
+## High level diagram
+
+```mermaid
+graph TD;
+    C["CSV Source (Large File)"] -->|Reads & Processes Data| A["Data Ingestion Application"];
+    A -->|Writes Data| DB["PostgreSQL (PostGIS)"];
+    B["API Application (FastAPI)"] -->|Reads Data| DB;
+    U["User"] -->|Makes API Requests| B;
+```
+
 ## CSV Processing Pipeline
 
 ```mermaid
